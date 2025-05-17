@@ -6,3 +6,5 @@ kubectl apply -f 'https://install.portworx.com/3.2?comp=pxoperator&kbver=1.25.0&
 kubectl apply -f 'https://install.portworx.com/3.2?operator=true&mc=false&kbver=1.25.0&ns=portworx&b=true&s=%2Fdev%2Fsdb&m=ens160&d=ens160&c=px-cluster-c7a4ab6b-e4b0-450a-b165-c431043014b0&stork=true&csi=true&mon=true&tel=false&st=k8s&promop=true'
 
 pxctl credentials create --provider=s3 --s3-disable-ssl --s3-region=us-east-1 --s3-access-key=minio --s3-secret-key=minio123 --s3-endpoint=10.0.0.4:30221 minio
+
+watch kubectl get events --field-selector involvedObject.kind=AutopilotRule,involvedObject.name=volume-resize --all-namespaces --sort-by .lastTimestamp
